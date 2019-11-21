@@ -1,0 +1,63 @@
+import pygame
+import random
+
+pygame.init()
+
+timer = pygame.time.Clock()
+
+BACKGROUND = (73,184,212)
+RED = (240,240,240)
+BLUE = (99,106,196) 
+
+HEIGHT =400
+WIDTH=400
+
+ekran = pygame.display.set_mode((WIDTH,HEIGHT))
+
+class Litera:
+  letter_prost =7
+
+  def __init__(self,letter,size,xPos,yPos):
+    self.letter = letter
+    self.size = size
+    self.xPos = xPos
+    self.yPos = yPos
+    font = pygame.font.SysFont("bitstreamverasansmono",self.size)
+    self.letterR = font.render(letter, True,RED)
+    
+  def blitLetter(self):
+    ekran.blit(self.letterR,(self.xPos,self.yPos))
+    
+SIZE = 54
+START_X=20
+START_Y=WIDTH/2
+
+vLetter = Litera("V",SIZE,START_X, START_Y)
+aLetter = Litera("A",SIZE,START_X+SIZE,START_Y)
+rLetter = Litera("R",SIZE,START_X+2*SIZE,START_Y)
+cLetter = Litera("C",SIZE,START_X+3*SIZE,START_Y)
+a2Letter = Litera("A",SIZE,START_X+4*SIZE,START_Y)
+uLetter = Litera("U",SIZE,START_X+5*SIZE,START_Y)
+sLetter = Litera("S",SIZE,START_X+6*SIZE,START_Y)
+  
+
+while True:
+  ekran.fill(BACKGROUND)  
+  vLetter.blitLetter()
+  aLetter.blitLetter()
+  rLetter.blitLetter()
+  cLetter.blitLetter()
+  aLetter.blitLetter()
+  a2Letter.blitLetter()
+  uLetter.blitLetter()
+  sLetter.blitLetter()
+  
+  for event in pygame.event.get() : 
+    if event.type == pygame.QUIT : 
+      pygame.quit() 
+      
+  pygame.display.update() 
+  
+  timer.tick(30)
+
+pygame.quit()
